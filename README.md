@@ -130,14 +130,6 @@ feat: implement responsive mobile layout
 docs: add comprehensive readme
 ```
 
-## 🚀 Deploy
-
-Este projeto pode ser facilmente deployado em:
-
-- **Vercel** (recomendado)
-- **Netlify**
-- **GitHub Pages**
-
 ## 📄 Licença
 
 MIT License
