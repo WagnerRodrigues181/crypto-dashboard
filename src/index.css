@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-gray-900/40 backdrop-blur-xl border border-gray-800/50;
+  }
+
+  .glass-hover {
+    @apply glass hover:bg-gray-900/60 transition-all duration-300;
+  }
+}
