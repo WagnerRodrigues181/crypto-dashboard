@@ -1,73 +1,149 @@
-# React + TypeScript + Vite
+# 🚀 CryptoVue - Real-Time Cryptocurrency Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard moderno e profissional para acompanhamento de criptomoedas em tempo real.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Tailwind](https://img.shields.io/badge/Tailwind-3-blue)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 📊 **Dados em Tempo Real** - Preços atualizados via CoinGecko API
+- 📈 **Gráficos Interativos** - Charts com múltiplos períodos (24H, 7D, 30D, 90D, 1Y)
+- ⭐ **Watchlist** - Acompanhe suas cryptos favoritas
+- 🔔 **Alertas de Preço** - Notificações quando atingir valores alvo
+- 🔍 **Busca Avançada** - Encontre qualquer criptomoeda instantaneamente
+- 🎨 **UI Moderna** - Design glassmorphism com animações suaves
+- 📱 **100% Responsivo** - Funciona perfeitamente em todos os dispositivos
+- ⚡ **Alta Performance** - Cache inteligente e renderização otimizada
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologias
 
-## Expanding the ESLint configuration
+- **React 18** + **TypeScript** - Base da aplicação
+- **Tailwind CSS** - Estilização
+- **Zustand** - Gerenciamento de estado
+- **Recharts** - Visualização de dados
+- **CoinGecko API** - Dados de mercado
+- **Vite** - Build tool
+- **React Hot Toast** - Notificações
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Como Rodar
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Instalar dependências
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Rodar em desenvolvimento
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build para produção
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📖 Funcionalidades
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Visualização de Mercado
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Top 50 criptomoedas por market cap
+- Estatísticas globais de mercado
+- Sparklines de 7 dias
+
+### 2. Filtros Inteligentes
+
+- **All Cryptos**: Todas as moedas
+- **Watchlist**: Suas favoritas
+- **Top Gainers**: Maiores altas 24h
+- **Top Losers**: Maiores quedas 24h
+
+### 3. Detalhes Completos
+
+- Preço atual e variação 24h
+- Market cap e volume
+- High/Low 24h
+- ATH/ATL (all-time high/low)
+- Gráficos históricos interativos
+
+### 4. Sistema de Alertas
+
+- Configure alertas de preço personalizados
+- Notificações quando metas são atingidas
+- Histórico de alertas disparados
+
+## 📁 Estrutura do Projeto
+
 ```
+src/
+├── components/       # Componentes React
+│   ├── Header.tsx
+│   ├── StatsOverview.tsx
+│   ├── CryptoCard.tsx
+│   ├── CryptoChart.tsx
+│   ├── CryptoDetailModal.tsx
+│   ├── PriceAlertModal.tsx
+│   ├── AlertsList.tsx
+│   ├── SearchBar.tsx
+│   ├── FilterTabs.tsx
+│   └── LoadingSkeleton.tsx
+├── services/         # APIs externas
+│   └── coingecko.ts
+├── store/            # Zustand stores
+│   └── useCryptoStore.ts
+├── types/            # TypeScript types
+│   └── crypto.ts
+├── utils/            # Funções utilitárias
+│   └── formatters.ts
+├── hooks/            # Custom hooks
+│   └── useCryptoData.ts
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+## 🎯 Destaques Técnicos
+
+- ✅ **TypeScript** com tipagem forte em 100% do código
+- ✅ **Clean Architecture** (separação de concerns)
+- ✅ **Custom Hooks** para lógica reutilizável
+- ✅ **State Management** moderno com Zustand
+- ✅ **API Integration** com cache inteligente
+- ✅ **Error Handling** robusto
+- ✅ **Loading States** e skeletons
+- ✅ **Responsive Design** mobile-first
+- ✅ **Performance** otimizada
+
+## 📝 Commits
+
+O projeto foi desenvolvido com **commits semânticos**:
+
+```
+feat: initialize project with react and typescript
+feat: integrate coingecko api client
+feat: create zustand store for state management
+feat: add utility functions for formatting
+feat: create custom hook for crypto data fetching
+feat: create crypto list component with real-time data
+feat: implement price chart with recharts
+feat: add price alert system with notifications
+feat: create detailed crypto info modal
+style: implement glassmorphism design system
+feat: add auto-refresh for real-time updates
+perf: optimize api calls with caching strategy
+feat: implement responsive mobile layout
+docs: add comprehensive readme
+```
+
+## 🚀 Deploy
+
+Este projeto pode ser facilmente deployado em:
+
+- **Vercel** (recomendado)
+- **Netlify**
+- **GitHub Pages**
+
+## 📄 Licença
+
+MIT License
+
+## 🙏 Agradecimentos
+
+- [CoinGecko](https://www.coingecko.com/) - API de dados
+- [Lucide](https://lucide.dev/) - Ícones
+- [Recharts](https://recharts.org/) - Gráficos
