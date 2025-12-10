@@ -1,5 +1,8 @@
 # 🚀 CryptoVue - Real-Time Cryptocurrency Dashboard
 
+<img width="1285" height="928" alt="Dashboard" src="https://github.com/user-attachments/assets/6b26f2f9-f432-452d-a083-a4b4abccc1c8" />
+
+
 Dashboard moderno e profissional para acompanhamento de criptomoedas em tempo real.
 
 ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Tailwind](https://img.shields.io/badge/Tailwind-3-blue)
@@ -39,6 +42,9 @@ npm run build
 ```
 
 ## 📖 Funcionalidades
+
+<img width="1020" height="960" alt="Details" src="https://github.com/user-attachments/assets/695d7258-726a-4676-a2a1-5871d73bad16" />
+
 
 ### 1. Visualização de Mercado
 
