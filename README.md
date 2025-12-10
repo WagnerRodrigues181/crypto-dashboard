@@ -1,5 +1,6 @@
 # 🚀 CryptoVue - Real-Time Cryptocurrency Dashboard
 
+
 <img width="1285" height="928" alt="Dashboard" src="https://github.com/user-attachments/assets/6b26f2f9-f432-452d-a083-a4b4abccc1c8" />
 
 
@@ -40,6 +41,8 @@ npm run dev
 # Build para produção
 npm run build
 ```
+
+🔗 **Live Demo:** https://crypto-dashboard-wr.netlify.app/
 
 ## 📖 Funcionalidades
 
