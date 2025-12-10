@@ -48,7 +48,7 @@ export const CryptoDetailModal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
       <div className="glass rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 glass border-b border-gray-800/50 p-6 flex items-center justify-between">
+        <div className="sticky top-0 z-10 glass border-b border-gray-800/50 p-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img
               src={crypto.image}
