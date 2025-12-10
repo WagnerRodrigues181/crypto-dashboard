@@ -1,8 +1,10 @@
 import { TrendingUp, TrendingDown, DollarSign, Activity } from "lucide-react";
 import { useCryptoStore } from "../store/useCryptoStore";
 import { formatMarketCap } from "../utils/formatters";
+import { useTranslation } from "../contexts/I18nContext";
 
 export const StatsOverview = () => {
+  const { t } = useTranslation();
   const { cryptos } = useCryptoStore();
 
   const totalMarketCap = cryptos.reduce(
@@ -24,28 +26,28 @@ export const StatsOverview = () => {
 
   const stats = [
     {
-      title: "Total Market Cap",
+      title: t("stats.totalMarketCap"),
       value: formatMarketCap(totalMarketCap),
       icon: DollarSign,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
     },
     {
-      title: "24h Volume",
+      title: t("stats.volume24h"),
       value: formatMarketCap(total24hVolume),
       icon: Activity,
       color: "text-purple-400",
       bgColor: "bg-purple-500/10",
     },
     {
-      title: "Avg 24h Change",
+      title: t("stats.avgChange"),
       value: `${avgChange > 0 ? "+" : ""}${avgChange.toFixed(2)}%`,
       icon: avgChange > 0 ? TrendingUp : TrendingDown,
       color: avgChange > 0 ? "text-green-400" : "text-red-400",
       bgColor: avgChange > 0 ? "bg-green-500/10" : "bg-red-500/10",
     },
     {
-      title: "Gainers / Losers",
+      title: t("stats.gainersLosers"),
       value: `${gainersCount} / ${cryptos.length - gainersCount}`,
       icon: TrendingUp,
       color: "text-cyan-400",

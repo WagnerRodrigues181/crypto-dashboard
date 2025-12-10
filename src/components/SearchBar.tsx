@@ -1,11 +1,13 @@
 import { Search, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "../contexts/I18nContext";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
 export const SearchBar = ({ onSearch }: SearchBarProps) => {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +28,7 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Search cryptocurrencies..."
+        placeholder={t("search.placeholder")}
         className="w-full pl-12 pr-12 py-3 glass rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all"
       />
       {query && (

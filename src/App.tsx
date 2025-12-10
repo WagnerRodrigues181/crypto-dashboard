@@ -10,12 +10,14 @@ import { AlertsList } from "./components/AlertsList";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { useCryptoData } from "./hooks/useCryptoData";
 import { useCryptoStore } from "./store/useCryptoStore";
+import { useTranslation } from "./contexts/I18nContext";
 import type { Crypto } from "./types/crypto";
 import { RefreshCw } from "lucide-react";
 
 type FilterType = "all" | "watchlist" | "gainers" | "losers";
 
 function App() {
+  const { t } = useTranslation();
   const { fetchCryptos } = useCryptoData();
   const { cryptos, watchlist, isLoading, setSelectedCrypto, selectedCrypto } =
     useCryptoStore();
@@ -110,7 +112,7 @@ function App() {
               <RefreshCw
                 className={`w-5 h-5 ${isRefreshing ? "animate-spin" : ""}`}
               />
-              <span className="hidden sm:inline">Refresh</span>
+              <span className="hidden sm:inline">{t("modal.refresh")}</span>
             </button>
           </div>
 
@@ -132,10 +134,10 @@ function App() {
           <div className="glass rounded-xl p-12 text-center">
             <p className="text-xl text-gray-400">
               {searchQuery
-                ? "No cryptocurrencies found matching your search"
+                ? t("empty.noResults")
                 : activeFilter === "watchlist"
-                ? "Your watchlist is empty. Star some cryptos to add them here!"
-                : "No cryptocurrencies found"}
+                ? t("empty.emptyWatchlist")
+                : t("empty.noCryptos")}
             </p>
           </div>
         ) : (

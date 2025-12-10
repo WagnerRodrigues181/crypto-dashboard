@@ -8,6 +8,7 @@ import {
 } from "recharts";
 import { formatPrice } from "../utils/formatters";
 import { format } from "date-fns";
+import { useTranslation } from "../contexts/I18nContext";
 
 interface CryptoChartProps {
   data: [number, number][];
@@ -15,6 +16,8 @@ interface CryptoChartProps {
 }
 
 export const CryptoChart = ({ data, isPositive }: CryptoChartProps) => {
+  const { t } = useTranslation();
+
   const chartData = data.map(([timestamp, price]) => ({
     timestamp,
     price,
@@ -23,7 +26,9 @@ export const CryptoChart = ({ data, isPositive }: CryptoChartProps) => {
 
   return (
     <div className="glass rounded-xl p-6">
-      <h3 className="text-lg font-semibold text-white mb-6">Price Chart</h3>
+      <h3 className="text-lg font-semibold text-white mb-6">
+        {t("modal.priceChart")}
+      </h3>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={chartData}>
           <defs>

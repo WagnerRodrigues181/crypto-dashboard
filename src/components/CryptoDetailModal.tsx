@@ -10,6 +10,7 @@ import {
 } from "../utils/formatters";
 import { CryptoChart } from "./CryptoChart";
 import { format } from "date-fns";
+import { useTranslation } from "../contexts/I18nContext";
 
 interface CryptoDetailModalProps {
   crypto: Crypto;
@@ -22,6 +23,7 @@ export const CryptoDetailModal = ({
   onClose,
   onSetAlert,
 }: CryptoDetailModalProps) => {
+  const { t } = useTranslation();
   const [chartData, setChartData] = useState<ChartData | null>(null);
   const [chartDays, setChartDays] = useState(7);
   const [loading, setLoading] = useState(true);
@@ -87,7 +89,7 @@ export const CryptoDetailModal = ({
                 )}
                 {formatPercentage(crypto.price_change_percentage_24h)}
               </span>
-              <span className="text-gray-500">24h</span>
+              <span className="text-gray-500">{t("time.h24")}</span>
             </div>
           </div>
 
@@ -98,7 +100,7 @@ export const CryptoDetailModal = ({
               className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary-500 hover:bg-primary-600 text-white font-medium transition-colors"
             >
               <Bell className="w-5 h-5" />
-              Set Price Alert
+              {t("alerts.setAlert")}
             </button>
 
             <a
@@ -108,7 +110,7 @@ export const CryptoDetailModal = ({
               className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg glass-hover font-medium transition-colors"
             >
               <ExternalLink className="w-5 h-5" />
-              CoinGecko
+              {t("modal.coingecko")}
             </a>
           </div>
 
@@ -147,7 +149,9 @@ export const CryptoDetailModal = ({
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="glass rounded-xl p-4">
-              <p className="text-sm text-gray-500 mb-1">Market Cap</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {t("card.marketCap")}
+              </p>
               <p className="text-lg font-semibold text-white">
                 {formatMarketCap(crypto.market_cap)}
               </p>
@@ -161,35 +165,41 @@ export const CryptoDetailModal = ({
             </div>
 
             <div className="glass rounded-xl p-4">
-              <p className="text-sm text-gray-500 mb-1">24h Volume</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {t("modal.volume24h")}
+              </p>
               <p className="text-lg font-semibold text-white">
                 {formatMarketCap(crypto.total_volume)}
               </p>
             </div>
 
             <div className="glass rounded-xl p-4">
-              <p className="text-sm text-gray-500 mb-1">Market Cap Rank</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {t("modal.marketCapRank")}
+              </p>
               <p className="text-lg font-semibold text-white">
                 #{crypto.market_cap_rank}
               </p>
             </div>
 
             <div className="glass rounded-xl p-4">
-              <p className="text-sm text-gray-500 mb-1">24h High</p>
+              <p className="text-sm text-gray-500 mb-1">{t("modal.high24h")}</p>
               <p className="text-lg font-semibold text-green-400">
                 {formatPrice(crypto.high_24h)}
               </p>
             </div>
 
             <div className="glass rounded-xl p-4">
-              <p className="text-sm text-gray-500 mb-1">24h Low</p>
+              <p className="text-sm text-gray-500 mb-1">{t("modal.low24h")}</p>
               <p className="text-lg font-semibold text-red-400">
                 {formatPrice(crypto.low_24h)}
               </p>
             </div>
 
             <div className="glass rounded-xl p-4">
-              <p className="text-sm text-gray-500 mb-1">Circulating Supply</p>
+              <p className="text-sm text-gray-500 mb-1">
+                {t("modal.circulatingSupply")}
+              </p>
               <p className="text-lg font-semibold text-white">
                 {crypto.circulating_supply.toLocaleString()}{" "}
                 {crypto.symbol.toUpperCase()}
@@ -198,7 +208,9 @@ export const CryptoDetailModal = ({
 
             {crypto.ath && (
               <div className="glass rounded-xl p-4">
-                <p className="text-sm text-gray-500 mb-1">All-Time High</p>
+                <p className="text-sm text-gray-500 mb-1">
+                  {t("modal.allTimeHigh")}
+                </p>
                 <p className="text-lg font-semibold text-white">
                   {formatPrice(crypto.ath)}
                 </p>
@@ -210,7 +222,9 @@ export const CryptoDetailModal = ({
 
             {crypto.atl && (
               <div className="glass rounded-xl p-4">
-                <p className="text-sm text-gray-500 mb-1">All-Time Low</p>
+                <p className="text-sm text-gray-500 mb-1">
+                  {t("modal.allTimeLow")}
+                </p>
                 <p className="text-lg font-semibold text-white">
                   {formatPrice(crypto.atl)}
                 </p>

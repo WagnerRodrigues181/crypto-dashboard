@@ -8,6 +8,7 @@ import {
   getChangeColor,
   getChangeBgColor,
 } from "../utils/formatters";
+import { useTranslation } from "../contexts/I18nContext";
 
 interface CryptoCardProps {
   crypto: Crypto;
@@ -16,6 +17,7 @@ interface CryptoCardProps {
 
 export const CryptoCard = ({ crypto, onClick }: CryptoCardProps) => {
   const { watchlist, toggleWatchlist } = useCryptoStore();
+  const { t } = useTranslation();
   const isInWatchlist = watchlist.includes(crypto.id);
   const isPositive = crypto.price_change_percentage_24h > 0;
 
@@ -75,20 +77,20 @@ export const CryptoCard = ({ crypto, onClick }: CryptoCardProps) => {
             )}
             {formatPercentage(crypto.price_change_percentage_24h)}
           </span>
-          <span className="text-sm text-gray-500">24h</span>
+          <span className="text-sm text-gray-500">{t("time.h24")}</span>
         </div>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-800/50">
         <div>
-          <p className="text-xs text-gray-500 mb-1">Market Cap</p>
+          <p className="text-xs text-gray-500 mb-1">{t("card.marketCap")}</p>
           <p className="text-sm font-semibold text-gray-300">
             {formatMarketCap(crypto.market_cap)}
           </p>
         </div>
         <div>
-          <p className="text-xs text-gray-500 mb-1">Volume 24h</p>
+          <p className="text-xs text-gray-500 mb-1">{t("card.volume24h")}</p>
           <p className="text-sm font-semibold text-gray-300">
             {formatMarketCap(crypto.total_volume)}
           </p>
@@ -122,7 +124,7 @@ export const CryptoCard = ({ crypto, onClick }: CryptoCardProps) => {
       {/* View Details */}
       <button className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors text-sm text-gray-300 group-hover:text-white">
         <Eye className="w-4 h-4" />
-        View Details
+        {t("card.viewDetails")}
       </button>
     </div>
   );

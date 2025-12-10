@@ -4,6 +4,7 @@ import type { Crypto } from "../types/crypto";
 import { useCryptoStore } from "../store/useCryptoStore";
 import { formatPrice } from "../utils/formatters";
 import toast from "react-hot-toast";
+import { useTranslation } from "../contexts/I18nContext";
 
 interface PriceAlertModalProps {
   crypto: Crypto;
@@ -14,13 +15,14 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
   const [targetPrice, setTargetPrice] = useState("");
   const [condition, setCondition] = useState<"above" | "below">("above");
   const { addAlert } = useCryptoStore();
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const price = parseFloat(targetPrice);
     if (isNaN(price) || price <= 0) {
-      toast.error("Please enter a valid price");
+      toast.error(t("priceAlert.validPrice"));
       return;
     }
 
@@ -31,7 +33,7 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
       condition,
     });
 
-    toast.success(`Alert set for ${crypto.name}!`);
+    toast.success(`${t("priceAlert.success")} ${crypto.name}!`);
     onClose();
   };
 
@@ -44,7 +46,9 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
             <div className="p-2 rounded-lg bg-primary-500/10">
               <Bell className="w-6 h-6 text-primary-400" />
             </div>
-            <h2 className="text-xl font-bold text-white">Set Price Alert</h2>
+            <h2 className="text-xl font-bold text-white">
+              {t("priceAlert.title")}
+            </h2>
           </div>
           <button
             onClick={onClose}
@@ -79,7 +83,7 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
           {/* Condition Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-400 mb-2">
-              Alert me when price goes
+              {t("priceAlert.alertWhen")}
             </label>
             <div className="grid grid-cols-2 gap-3">
               <button
@@ -92,7 +96,7 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
                 }`}
               >
                 <TrendingUp className="w-5 h-5" />
-                Above
+                {t("priceAlert.above")}
               </button>
               <button
                 type="button"
@@ -104,7 +108,7 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
                 }`}
               >
                 <TrendingDown className="w-5 h-5" />
-                Below
+                {t("priceAlert.below")}
               </button>
             </div>
           </div>
@@ -112,14 +116,14 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
           {/* Target Price Input */}
           <div>
             <label className="block text-sm font-medium text-gray-400 mb-2">
-              Target Price (USD)
+              {t("priceAlert.targetPrice")}
             </label>
             <input
               type="number"
               step="0.00000001"
               value={targetPrice}
               onChange={(e) => setTargetPrice(e.target.value)}
-              placeholder="Enter target price..."
+              placeholder={t("priceAlert.targetPricePlaceholder")}
               className="w-full px-4 py-3 glass rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all"
               required
             />
@@ -129,10 +133,10 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
           {targetPrice && (
             <div className="glass rounded-xl p-4 border border-primary-500/20">
               <p className="text-sm text-gray-400 mb-1">
-                You'll be notified when
+                {t("priceAlert.preview")}
               </p>
               <p className="text-white font-medium">
-                {crypto.name} goes {condition}{" "}
+                {crypto.name} {t("priceAlert.goes")} {condition}{" "}
                 <span
                   className={
                     condition === "above" ? "text-green-400" : "text-red-400"
@@ -151,13 +155,13 @@ export const PriceAlertModal = ({ crypto, onClose }: PriceAlertModalProps) => {
               onClick={onClose}
               className="flex-1 px-4 py-3 rounded-lg glass-hover font-medium transition-colors"
             >
-              Cancel
+              {t("priceAlert.cancel")}
             </button>
             <button
               type="submit"
               className="flex-1 px-4 py-3 rounded-lg bg-primary-500 hover:bg-primary-600 text-white font-medium transition-colors"
             >
-              Create Alert
+              {t("priceAlert.create")}
             </button>
           </div>
         </form>

@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { coinGeckoService } from "../services/coingecko";
 import { useCryptoStore } from "../store/useCryptoStore";
+import { useTranslation } from "../contexts/I18nContext";
 import toast from "react-hot-toast";
 
 export const useCryptoData = (autoRefresh = true) => {
+  const { t } = useTranslation();
   const { setCryptos, setLoading, setError, alerts, triggerAlert } =
     useCryptoStore();
 
@@ -27,7 +29,9 @@ export const useCryptoData = (autoRefresh = true) => {
             if (shouldTrigger) {
               triggerAlert(alert.id);
               toast.success(
-                `Price Alert: ${crypto.name} is now ${alert.condition} $${alert.targetPrice}!`,
+                `${t("priceAlert.triggered")}: ${crypto.name} ${t(
+                  "priceAlert.isNow"
+                )} ${t(`alerts.${alert.condition}`)} $${alert.targetPrice}!`,
                 { duration: 5000 }
               );
             }
@@ -36,7 +40,7 @@ export const useCryptoData = (autoRefresh = true) => {
       });
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Failed to fetch data";
+        error instanceof Error ? error.message : t("errors.fetchData");
       setError(message);
       toast.error(message);
     } finally {

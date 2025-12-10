@@ -2,9 +2,11 @@ import { Bell, Trash2, TrendingUp, TrendingDown, Check } from "lucide-react";
 import { useCryptoStore } from "../store/useCryptoStore";
 import { formatPrice } from "../utils/formatters";
 import { format } from "date-fns";
+import { useTranslation } from "../contexts/I18nContext";
 
 export const AlertsList = () => {
   const { alerts, removeAlert } = useCryptoStore();
+  const { t } = useTranslation();
 
   if (alerts.length === 0) {
     return (
@@ -13,12 +15,9 @@ export const AlertsList = () => {
           <Bell className="w-8 h-8 text-gray-500" />
         </div>
         <h3 className="text-lg font-semibold text-white mb-2">
-          No Active Alerts
+          {t("alerts.noAlerts")}
         </h3>
-        <p className="text-gray-500">
-          Set price alerts to get notified when your favorite cryptos reach
-          target prices
-        </p>
+        <p className="text-gray-500">{t("alerts.noAlertsDescription")}</p>
       </div>
     );
   }
@@ -26,7 +25,7 @@ export const AlertsList = () => {
   return (
     <div className="space-y-3">
       <h3 className="text-lg font-semibold text-white mb-4">
-        Price Alerts ({alerts.length})
+        {t("alerts.count")} ({alerts.length})
       </h3>
       {alerts.map((alert) => (
         <div
@@ -66,11 +65,15 @@ export const AlertsList = () => {
               <div className="flex-1">
                 <p className="font-medium text-white">{alert.cryptoName}</p>
                 <p className="text-sm text-gray-400">
-                  {alert.triggered ? "Triggered" : "Waiting"} •{" "}
-                  {alert.condition} {formatPrice(alert.targetPrice)}
+                  {alert.triggered
+                    ? t("alerts.triggered")
+                    : t("alerts.waiting")}{" "}
+                  • {t(`alerts.${alert.condition}`)}{" "}
+                  {formatPrice(alert.targetPrice)}
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  Created {format(new Date(alert.createdAt), "MMM dd, HH:mm")}
+                  {t("alerts.created")}{" "}
+                  {format(new Date(alert.createdAt), "MMM dd, HH:mm")}
                 </p>
               </div>
             </div>

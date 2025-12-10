@@ -1,3 +1,5 @@
+import { useTranslation } from "../contexts/I18nContext";
+
 interface FilterTabsProps {
   activeFilter: "all" | "watchlist" | "gainers" | "losers";
   onFilterChange: (filter: "all" | "watchlist" | "gainers" | "losers") => void;
@@ -7,11 +9,13 @@ export const FilterTabs = ({
   activeFilter,
   onFilterChange,
 }: FilterTabsProps) => {
+  const { t } = useTranslation();
+
   const tabs = [
-    { id: "all" as const, label: "All Cryptos" },
-    { id: "watchlist" as const, label: "Watchlist" },
-    { id: "gainers" as const, label: "Top Gainers" },
-    { id: "losers" as const, label: "Top Losers" },
+    { id: "all" as const, label: t("filters.all") },
+    { id: "watchlist" as const, label: t("filters.watchlist") },
+    { id: "gainers" as const, label: t("filters.gainers") },
+    { id: "losers" as const, label: t("filters.losers") },
   ];
 
   return (
