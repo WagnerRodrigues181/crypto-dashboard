@@ -17,6 +17,7 @@ Dashboard moderno e profissional para acompanhamento de criptomoedas em tempo re
 - 🔍 **Busca Avançada** - Encontre qualquer criptomoeda instantaneamente
 - 🎨 **UI Moderna** - Design glassmorphism com animações suaves
 - 📱 **100% Responsivo** - Funciona perfeitamente em todos os dispositivos
+- 🌎 Multi-idioma (pt-BR / en-US) — Implementado com I18nContext
 - ⚡ **Alta Performance** - Cache inteligente e renderização otimizada
 
 ## 🛠️ Tecnologias
