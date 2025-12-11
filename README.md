@@ -22,13 +22,29 @@ Dashboard moderno e profissional para acompanhamento de criptomoedas em tempo re
 
 ## 🛠️ Tecnologias
 
-- **React 18** + **TypeScript** - Base da aplicação
-- **Tailwind CSS** - Estilização
-- **Zustand** - Gerenciamento de estado
-- **Recharts** - Visualização de dados
-- **CoinGecko API** - Dados de mercado
-- **Vite** - Build tool
-- **React Hot Toast** - Notificações
+<div align="center">
+
+### Core
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+
+### Estilização
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white)
+
+### Libs
+![Zustand](https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=react&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-FF6B6B?style=for-the-badge&logo=chart.js&logoColor=white)
+![React Hot Toast](https://img.shields.io/badge/Hot_Toast-F59E0B?style=for-the-badge&logo=react&logoColor=white)
+![date-fns](https://img.shields.io/badge/date--fns-770C56?style=for-the-badge&logo=javascript&logoColor=white)
+
+### API & Ferramentas
+![CoinGecko](https://img.shields.io/badge/CoinGecko_API-8DC63F?style=for-the-badge&logo=coingecko&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+
+</div>
+
 
 ## 🚀 Como Rodar
 
