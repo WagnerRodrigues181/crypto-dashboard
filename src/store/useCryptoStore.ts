@@ -20,6 +20,9 @@ interface CryptoStore {
   setError: (error: string | null) => void;
 }
 
+const generateId = (): string =>
+  Math.random().toString(36).slice(2) + Date.now().toString(36);
+
 export const useCryptoStore = create<CryptoStore>()(
   persist(
     (set) => ({
@@ -47,7 +50,7 @@ export const useCryptoStore = create<CryptoStore>()(
             ...state.alerts,
             {
               ...alert,
-              id: crypto.randomUUID(),
+              id: generateId(),
               createdAt: Date.now(),
               triggered: false,
             },
@@ -62,7 +65,7 @@ export const useCryptoStore = create<CryptoStore>()(
       triggerAlert: (alertId) =>
         set((state) => ({
           alerts: state.alerts.map((alert) =>
-            alert.id === alertId ? { ...alert, triggered: true } : alert
+            alert.id === alertId ? { ...alert, triggered: true } : alert,
           ),
         })),
 
@@ -76,6 +79,6 @@ export const useCryptoStore = create<CryptoStore>()(
         watchlist: state.watchlist,
         alerts: state.alerts,
       }),
-    }
-  )
+    },
+  ),
 );
