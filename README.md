@@ -59,7 +59,7 @@ npm run dev
 npm run build
 ```
 
-🔗 **Live Demo:** https://crypto-dashboard-wr.netlify.app/
+🔗 **Live Demo:** https://crypto-dashboard-rust-tau.vercel.app/
 
 ## 📖 Funcionalidades
 
