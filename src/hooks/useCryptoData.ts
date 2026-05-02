@@ -6,8 +6,7 @@ import toast from "react-hot-toast";
 
 export const useCryptoData = (autoRefresh = true) => {
   const { t } = useTranslation();
-  const { setCryptos, setLoading, setError, alerts, triggerAlert } =
-    useCryptoStore();
+  const { setCryptos, setLoading, setError, alerts } = useCryptoStore();
 
   const alertsRef = useRef(alerts);
   useEffect(() => {
